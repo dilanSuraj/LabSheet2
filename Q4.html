@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function NewVehicle(vehicleType) {
+        this.type = vehicleType;
+        NewVehicle.VEHICLECOUNT ++;
+
+    }
+
+    NewVehicle.prototype.printVehicle = function () {
+      console.log("Vehicle is driving");
+
+    };
+
+    NewVehicle.VEHICLECOUNT = 0;
+
+    var vehicle = new NewVehicle("Toyota");
+
+
+    function Car(type) {
+        NewVehicle.call(this,type);
+    }
+
+    Car.prototype = Object.create(NewVehicle.prototype);
+    Car.prototype.constructor = Car;
+
+    Car.prototype.balanceWheels = function () {
+      console.log("Wheels are balanced");
+    };
+    var car = new Car("Hybrid");
+    car.printVehicle();
+
+    car.balanceWheels();
+
+    // console.log(car.type,Car.VEHICLECOUNT); In this way we cannot get the vehicle count because of the static reason
+
+    console.log(car.type,NewVehicle.VEHICLECOUNT);
+
+</script>
+
+</body>
+</html>
