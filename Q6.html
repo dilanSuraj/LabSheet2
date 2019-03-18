@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function fetchUsers() {
+        return fetch('https://api.github.com/users').then(response => response.json());
+    }
+
+    fetchUsers().then(json => console.log(json));
+
+    //Whenever you need to write more than one line of code , you should use curly braces.
+    //Whenever you are using arrow function, you have to return something, otherwise it should be a curly braces
+</script>
+</body>
+</html>
